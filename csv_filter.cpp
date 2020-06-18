@@ -18,7 +18,7 @@ void insert(std::map<std::string, int> &map1, std::string word)
 
 int main () {
      std::string line;
-     std::ifstream myfile ("filtered_jobs.csv");
+     std::ifstream myfile ("jobs.csv");
      if (myfile.is_open())
      {
           std::map<std::string, int> myMap;
