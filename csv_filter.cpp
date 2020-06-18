@@ -43,20 +43,19 @@ int main () {
           }
 
           std::vector<pair> vec;
-	     std::copy(myMap.begin(), myMap.end(),std::back_inserter<std::vector<pair>>(vec));
-	     std::sort(vec.begin(), vec.end(), [](const pair& l, const pair& r) {
-			if (l.second != r.second)
-				return l.second > r.second;
+          std::copy(myMap.begin(), myMap.end(),std::back_inserter<std::vector<pair>>(vec));
+          std::sort(vec.begin(), vec.end(), [](const pair& l, const pair& r) {
+               if (l.second != r.second)
+                    return l.second > r.second;
 			return l.first > r.first;
 		});
 
-	     for (auto const &pair: vec) {
-		     std::cout << "Word: " << pair.first << "\tCount: " << pair.second << '\n';
-	     }
+          for (auto const &pair: vec) {
+               std::cout << "Word: " << pair.first << "\tCount: " << pair.second << '\n';
+          }
 
           myfile.close();
      }
      else std::cout << "Unable to open file"; 
      return 0;
 }
-
