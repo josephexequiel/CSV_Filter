@@ -16,6 +16,8 @@ void insert(std::map<std::string, int> &map1, std::string word)
           map1.insert(std::map<std::string,int>::value_type(word,1));
 }
 
+typedef std::pair<std::string,int> pair;
+
 int main () {
      std::string line;
      std::ifstream myfile ("jobs.csv");
@@ -40,10 +42,17 @@ int main () {
                }
           }
 
-          for (auto x : myMap)
-          {
-               std::cout << "Word: " << x.first << "\tCount: " << x.second << std::endl;
-          }
+          std::vector<pair> vec;
+	     std::copy(myMap.begin(), myMap.end(),std::back_inserter<std::vector<pair>>(vec));
+	     std::sort(vec.begin(), vec.end(), [](const pair& l, const pair& r) {
+			if (l.second != r.second)
+				return l.second > r.second;
+			return l.first > r.first;
+		});
+
+	     for (auto const &pair: vec) {
+		     std::cout << "Word: " << pair.first << "\tCount: " << pair.second << '\n';
+	     }
 
           myfile.close();
      }
