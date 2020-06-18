@@ -33,6 +33,7 @@ int main () {
                     for(std::vector<std::string>::const_iterator i = vstrings.begin(); i != vstrings.end(); ++i) {
                          std::string check_word = *i;
                          check_word.erase(std::remove_if(check_word.begin(), check_word.end(), [](char c) { return !std::isalnum(c); }), check_word.end());
+                         std::for_each(check_word.begin(), check_word.end(), [](char & c) {c = ::tolower(c);});
                          insert(myMap, check_word);
                     }
                }
@@ -45,4 +46,3 @@ int main () {
      else std::cout << "Unable to open file"; 
      return 0;
 }
-
