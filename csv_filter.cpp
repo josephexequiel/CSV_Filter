@@ -55,12 +55,12 @@ int main () {
 
           using std::setw;
           for (auto const &pair: vec) {
-               std::cout << "Word: " << setw(45) << pair.first << setw(15) << "Count: " << pair.second << '\n';
+               std::cout << "Word: " << std::left << setw(40) << pair.first << setw(8) << "Count: " << std::left << pair.second << '\n';
           }
 
           myfile.close();
      }
-     else std::cout << "Unable to open file";
+     else std::cout << "Unable to open file"; 
      return 0;
 }
 
