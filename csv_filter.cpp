@@ -7,6 +7,7 @@
 #include <map>
 #include <algorithm>
 #include <locale>
+#include <regex>
 
 void insert(std::map<std::string, int> &map1, std::string word)
 {
@@ -26,8 +27,12 @@ int main () {
           std::map<std::string, int> myMap;
           while ( getline (myfile, line, ',') )
           {
-               if (!(line.empty()) || !(line.find_first_not_of(' ') == std::string::npos))
+               if (!(line.empty()) || !(line.find_first_not_of(' ') == std::string::npos) || !(line.size()))
                {
+                    std::regex newlines_r1("\n+");
+                    std::regex newlines_r2("\r+");
+                    line = std::regex_replace(line, newlines_r1, "");
+                    line = std::regex_replace(line, newlines_r2, "");
                     std::stringstream ss(line);
                     std::istream_iterator<std::string> begin(ss);
                     std::istream_iterator<std::string> end;
@@ -59,3 +64,4 @@ int main () {
      else std::cout << "Unable to open file"; 
      return 0;
 }
+
