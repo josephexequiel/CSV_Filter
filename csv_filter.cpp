@@ -59,8 +59,12 @@ int main () {
           }
 
           myfile.close();
+          return 0;
      }
-     else std::cout << "Unable to open file"; 
-     return 0;
+     else
+     {
+          std::cout << "Unable to open file" << std::endl; 
+          return 1;
+     }
 }
 
