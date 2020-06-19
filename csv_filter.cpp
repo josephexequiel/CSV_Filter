@@ -6,7 +6,7 @@
 #include <sstream>
 #include <map>
 #include <algorithm>
-#include <locale>
+#include <iomanip>
 #include <regex>
 
 void insert(std::map<std::string, int> &map1, std::string word)
@@ -53,13 +53,14 @@ int main () {
 			return l.first > r.first;
 		});
 
+          using std::setw;
           for (auto const &pair: vec) {
-               std::cout << "Word: " << pair.first << "\tCount: " << pair.second << '\n';
+               std::cout << "Word: " << setw(45) << pair.first << setw(15) << "Count: " << pair.second << '\n';
           }
 
           myfile.close();
      }
-     else std::cout << "Unable to open file"; 
+     else std::cout << "Unable to open file";
      return 0;
 }
 
