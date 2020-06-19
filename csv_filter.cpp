@@ -30,7 +30,11 @@ int main () {
                if (!(line.empty()) || !(line.find_first_not_of(' ') == std::string::npos) || !(line.size()))
                {
                     std::regex newlines_r1("\n");
-                    line = std::regex_replace(line, newlines_r1, "");
+                    std::regex newlines_r2("/");
+                    std::regex newlines_r3("-");
+                    line = std::regex_replace(line, newlines_r1, " ");
+                    line = std::regex_replace(line, newlines_r2, " ");
+                    line = std::regex_replace(line, newlines_r3, " ");
                     std::stringstream ss(line);
                     std::istream_iterator<std::string> begin(ss);
                     std::istream_iterator<std::string> end;
